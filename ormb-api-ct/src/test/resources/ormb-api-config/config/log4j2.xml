@@ -1,0 +1,31 @@
+<Configuration>
+  <Appenders>
+    <RollingFile
+      fileName="../logs/ORMB_WEB.log"
+      filePattern="../logs/ORMB_WEB.%i.log.gz"
+      name="file">
+      <PatternLayout
+        pattern="%.-1level : %d{yyyy-MM-dd HH:mm:ss:SSS} : %marker : %t : %logger{1.1.1.*} : %msg%n%ex"
+      />
+      <Policies>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="10" min="1"/>
+    </RollingFile>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout
+        pattern="%.-1level : %d{yyyy-MM-dd HH:mm:ss:SSS} : %marker : %t : %logger{1.1.1.*} : %msg%n%ex"
+      />
+    </Console>
+  </Appenders>
+  <Loggers>
+	<Logger name="com.worldpay.sop.aip.jwt.Jwt" level="ERROR" additivity="false">
+		<AppenderRef ref="file"/>
+		<AppenderRef ref="STDOUT"/>
+	</Logger>
+    <Root level="INFO">
+      <AppenderRef ref="file"/>
+	  <AppenderRef ref="STDOUT"/>
+    </Root>
+  </Loggers>
+</Configuration>
