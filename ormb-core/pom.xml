@@ -1,0 +1,210 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.worldpay.servicing</groupId>
+		<artifactId>ormb-api</artifactId>
+		<version>5.0.12-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>ormb-core</artifactId>
+	<packaging>jar</packaging>
+	<name>Ormb-Core</name>
+	<description>Servicing Core Functionalities</description>
+	<properties>
+		<sonar.exclusions>
+			**/com/worldpay/servicing/core/dao/**,
+			**/com/worldpay/servicing/core/CoreConfiguration.java,
+			**/com/worldpay/servicing/core/logging/**
+		</sonar.exclusions>
+
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.worldpay.servicing</groupId>
+			<artifactId>ormb-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		<!--<dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-api</artifactId> 
+			</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+
+		<!-- TPG dependencies -->
+		<dependency>
+			<groupId>com.worldpay.tpg</groupId>
+			<artifactId>tpg-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.worldpay.tpg</groupId>
+			<artifactId>tpg-logging</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.worldpay.servicing</groupId>
+			<artifactId>ormb-model</artifactId>
+			<classifier>tests</classifier>
+			<type>test-jar</type>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.interceptor</groupId>
+			<artifactId>javax.interceptor-api</artifactId>
+			<version>1.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>javax.transaction-api</artifactId>
+			<version>1.3</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.transaction/javax.transaction-api -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot</artifactId>
+		</dependency>
+		<!--<dependency> <groupId>org.hibernate.validator</groupId> <artifactId>hibernate-validator</artifactId> 
+			</dependency> -->
+
+		<!-- javasimon -->
+		<dependency>
+			<groupId>org.javasimon</groupId>
+			<artifactId>javasimon-core</artifactId>
+		</dependency>
+
+		<!-- Test dependencies -->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						Don't instrument these classes. The Jacoco code coverage report
+						won't include these classes.
+						<exclude>**/com/worldpay/servicing/core/dao/**,
+							**/com/worldpay/servicing/core/CoreConfiguration.java
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<ignoredUnusedDeclaredDependencies>
+						<ignoredUnusedDeclaredDependency>
+							org.springframework.boot:spring-boot-starter-data-jpa:jar:2.1.2.RELEASE
+						</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>
+							org.springframework.boot:spring-boot-starter:jar:2.1.2.RELEASE
+						</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>com.github.ulisesbocchio:jasypt-spring-boot:jar:2.1.0
+						</ignoredUnusedDeclaredDependency>
+
+						<!-- Ignore because this is provided by the container -->
+						<ignoredUsedUndeclaredDependency>org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.14
+						</ignoredUsedUndeclaredDependency>
+					</ignoredUnusedDeclaredDependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
