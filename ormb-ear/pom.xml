@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.worldpay.servicing</groupId>
+    <artifactId>ormb-api</artifactId>
+    <version>5.0.12-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>ormb-ear</artifactId>
+  <packaging>ear</packaging>
+  <name>Ormb Ear</name>
+  <description>Servicing Ear Application Package</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.worldpay.servicing</groupId>
+      <artifactId>ormb-web</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ear-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <configuration>
+          <ignoredUnusedDeclaredDependencies>
+            <ignoredUnusedDeclaredDependency>com.worldpay.servicing:ormb-web:war
+            </ignoredUnusedDeclaredDependency>
+          </ignoredUnusedDeclaredDependencies>
+        </configuration>
+      </plugin>
+      <plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<configuration>
+					<!-- The destination file for the code coverage report has to be set 
+						to the same value in the parent pom and in each module pom. Then JaCoCo will 
+						add up information in the same report, so that, it will give the cross-module 
+						code coverage. -->
+					<destFile>${project.basedir}/../target/jacoco-it.exec</destFile>
+				</configuration>
+			</plugin>
+		</plugins>    
+     
+  </build>
+
+</project>
