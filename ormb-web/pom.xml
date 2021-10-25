@@ -1,0 +1,352 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.worldpay.servicing</groupId>
+		<artifactId>ormb-api</artifactId>
+		<version>5.0.12-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>ormb-web</artifactId>
+	<packaging>war</packaging>
+	<name>Ormb Web</name>
+	<description>Servicing Web Application Package</description>
+	<properties>
+		<coverage.exclusions>
+			**/com/worldpay/servicing/web/filter/CORSFilter.java,
+			**/com/worldpay/servicing/web/ApplicationMain.java,
+			**/com/worldpay/servicing/web/ApplicationConfiguration.java,
+			**/com/worldpay/servicing/web/doc/SwaggerConfig.java,
+			**/com/worldpay/servicing/web/JavaSimonConfig.java
+		</coverage.exclusions>
+		<sonar.exclusions>
+			${coverage.exclusions}
+		</sonar.exclusions>
+		<sonar.coverage.exclusions>
+			${coverage.exclusions}
+		</sonar.coverage.exclusions>
+
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.worldpay.servicing</groupId>
+			<artifactId>ormb-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.worldpay.servicing</groupId>
+			<artifactId>ormb-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-web -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-spring-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.worldpay.servicing</groupId>
+			<artifactId>servicing-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.worldpay.servicing</groupId>
+			<artifactId>servicing-common</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>9.0.14</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.worldpay.servicing</groupId>
+			<artifactId>ormb-model</artifactId>
+			<classifier>tests</classifier>
+			<type>test-jar</type>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>net.bytebuddy</groupId>
+					<artifactId>byte-buddy</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
+		<!-- javasimon -->
+		<dependency>
+			<groupId>org.javasimon</groupId>
+			<artifactId>javasimon-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.javasimon</groupId>
+			<artifactId>javasimon-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.javasimon</groupId>
+			<artifactId>javasimon-console-embed</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-spi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-core</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>net.bytebuddy</groupId>
+					<artifactId>byte-buddy</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.noraui</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.bytebuddy</groupId>
+			<artifactId>byte-buddy</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring.boot.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<mainClass>com.worldpay.servicing.web.ApplicationMain</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<ignoredUnusedDeclaredDependencies>
+						<ignoredUnusedDeclaredDependency>org.springframework.boot:spring-boot-starter-data-jpa:jar:2.1.2.RELEASE</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>org.springframework.boot:spring-boot-starter-web:jar:2.1.2.RELEASE</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>io.springfox:springfox-swagger-ui:jar:2.9.2</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>org.springframework.boot:spring-boot-starter-web-services:jar:2.1.2.RELEASE</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>com.fasterxml.jackson.core:jackson-databind:jar:2.9.8</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>wsdl4j:wsdl4j:jar:1.6.3</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>net.bytebuddy:byte-buddy:jar:1.9.3</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>com.worldpay.servicing:servicing-common</ignoredUnusedDeclaredDependency>
+						<ignoredUnusedDeclaredDependency>org.springframework.boot:spring-boot-starter-actuator</ignoredUnusedDeclaredDependency>
+					</ignoredUnusedDeclaredDependencies>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
+				<executions> <execution> <id>attach-javadocs</id> <goals> <goal>jar</goal> 
+				</goals> <configuration> <additionalparam>-Xdoclint:none</additionalparam> 
+				<excludePackageNames>com.worldpay.servicing.web.approvews.*</excludePackageNames> 
+				</configuration> </execution> <execution> <id>attach-test-javadocs</id> <goals> 
+				<goal>jar</goal> </goals> <configuration> <additionalparam>-Xdoclint:none</additionalparam> 
+				<excludePackageNames>com.worldpay.servicing.web.approvews.*</excludePackageNames> 
+				</configuration> </execution> </executions> </plugin> -->
+		</plugins>
+	</build>
+	<!-- <reporting> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-javadoc-plugin</artifactId> <configuration> <additionalparam>-Xdoclint:none</additionalparam> 
+		<excludePackageNames>com.worldpay.servicing.web.approvews.*</excludePackageNames> 
+		</configuration> </plugin> </plugins> </reporting> -->
+	<profiles>
+		<profile>
+			<id>jacoco-coverage-app</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>jacoco-coverage-report</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<!-- Don't instrument these classes. The Jacoco code coverage report 
+									won't include these classes. -->
+								<exclude>${coverage.exclusions}</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<reporting>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<!-- Don't instrument these classes in the report for the Sonar job. 
+									These classes still need to be added in the sonar.coverage.exclusions property 
+									in order for the Sonar report to ignore them. If they are not added to the 
+									sonar.coverage.exclusions property then they'll show up with 0% code coverage 
+									even if some lines/conditions are covered. -->
+								<exclude>${coverage.exclusions}</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+
+
+			</reporting>
+		</profile>
+		<profile>
+			<id>ormb-web</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<!-- <version>3.0.0-M3</version> -->
+						<configuration>
+							<skipTests>false</skipTests>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
